@@ -1,0 +1,178 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Classes disponibles :
+%%	- times : utilisation de la police Times par défaut.
+%%	- these, sujthese, projthese, memoire, essai, rapport : pour
+%%		générer la page de garde en fonction du type document.
+%%	- french, english : selon la langue dans laquelle doit
+%%		être rédigé le document.
+%%  - ieee, apa : style des références bibliographiques
+%%  - twoside : alternance des marges pour impression recto/verso
+%%    vous devez décommenter la ligne 22 si vous utilisez cette classe
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,times,rapport,french,apa]{uqac}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Décommenter la ligne suivante avec l'utilisation de
+%% la classe "twoside"
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \raggedbottom
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Préciser l'emplacement du fichier
+%% contenant les acronymes.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\acrolistpath{assets/acro}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Toutes les images utilisées doivent se trouver dans
+%% le répertoire "assets/figure".
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{assets/figures/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Packages utilisateurs ci-dessous:
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{color, xcolor, soulutf8}
+\usepackage{tikz}
+\usetikzlibrary{babel}
+\usepackage{chemfig}
+\usepackage{chemnum}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\usepackage{tikz-feynman}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=[rgb]{0,0.501,0.674},
+  breaklinks=true,
+  citecolor=[rgb]{0,0.501,0.674},
+  bookmarks=true
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Césures manuelles
+%%
+%%%%%%%%%%%%%%%%%%%%%
+% \hyphenation{con-nection con-nue con-cep-tion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Gestion des lignes orphelines
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\widowpenalty10000
+\clubpenalty10000
+
+\begin{document}
+\pagestyle{empty}
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Titre, auteur et programme
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Système de détection d'anomalies et de gestion de logs pour la sécurité des réseaux}
+\author{Larzul Julien}
+\programme{Informatique}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% S’il y a lieu, indiquer le profil
+%% ou la concentration du programme
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\concentration{profil recherche}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Par défaut l'année courante est utilisée.
+%% Pour spécifier une autre année :
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\degreeyear{2018}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Page préliminaires
+%%
+%%%%%%%%%%%%%%%%%%%%%
+\opening
+% \pagestyle{empty}
+
+% \include{content/abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Si vous écrivez un document en anglais,
+%% il sera nécessaire de fournir un résumé en Français :
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\include{content/resume}
+
+\tableofcontents
+\cleardoublepage
+% \listoftables
+\listoffigures
+% \listofacro
+
+% \include{content/dedicace}
+% \include{content/remerciements}
+% \include{content/avant_propos}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Document principal
+%%
+%%%%%%%%%%%%%%%%%%%%%
+% \pagestyle{fancy}
+\maincontent
+
+\include{content/introduction}
+\include{content/chapitre1}
+\include{content/chapitre2}
+\include{content/chapitre3}
+\include{content/chapitre4}
+\include{content/chapitre5}
+\include{content/chapitre6}
+\include{content/conclusion}
+
+
+%%%%%%%%$%%%%
+%%
+%% Références
+%%
+%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Le fichier BibTeX contenant les références
+%% doit se trouver dans le répertoire "assets/references".
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliography{assets/references}
+
+%%%%%%%%%%%
+%%
+%% Annexes
+%%
+%%%%%%%%%%%
+% \appendix
+
+% \include{content/annexe_a}
+
+\end{document}
