@@ -1,3 +1,29 @@
 \begin{introduction}
 
+Dans ce contexte, ce projet a pour objectif la conception et le déploiement d’un
+\textit{système de détection d’anomalies et de gestion de logs}. 
+L’approche consiste à mettre en place une chaîne complète allant de la collecte des journaux
+jusqu’à leur visualisation et leur analyse via une interface conviviale. 
+L’architecture retenue repose sur quatre briques logicielles complémentaires :
+\begin{itemize}
+    \item \textbf{Suricata}, un système de détection d’intrusions (IDS/IPS) chargé
+    d’analyser le trafic réseau et de générer des alertes en temps réel ;
+    \item \textbf{syslog-ng}, utilisé pour centraliser les journaux du système et des applications ;
+    \item \textbf{Elasticsearch}, base de données NoSQL permettant l’indexation et la recherche rapide
+    des événements collectés ;
+    \item \textbf{Kibana}, une interface web offrant des fonctionnalités de visualisation et de
+    création de tableaux de bord.
+\end{itemize}
+
+Le projet doit également inclure l’implémentation de plusieurs scénarios d’attaque
+simulés. Ces cas d’intrusion permettront de valider la capacité du système à détecter
+différents comportements malveillants et à générer des alertes exploitables par
+l’administrateur.
+
+Ce rapport présente dans un premier temps l’environnement mis en place et les choix
+technologiques retenus. Il détaille ensuite la configuration et l’intégration des outils,
+avant de décrire et d’analyser cinq scénarios d’intrusion représentatifs. 
+Enfin, une partie est consacrée à la visualisation des résultats, à l’évaluation des limites
+du système et aux perspectives d’amélioration.
+
 \end{introduction}

@@ -59,6 +59,18 @@
   bookmarks=true
 }
 
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstdefinestyle{bashstyle}{
+  basicstyle=\ttfamily\small,   % smaller monospace
+  breaklines=true,              % wrap long lines
+  breakatwhitespace=false,      % allow breaking inside long URLs
+  columns=fullflexible,
+  keepspaces=true,              % keep alignment
+  postbreak=\mbox{\textcolor{gray}{\(\hookrightarrow\)}\space} % wrap marker
+}
+
 %%%%%%%%%%%%%%%%%%%%%
 %%
 %% Césures manuelles
@@ -148,7 +160,6 @@
 \include{content/chapitre3}
 \include{content/chapitre4}
 \include{content/chapitre5}
-\include{content/chapitre6}
 \include{content/conclusion}
 
 

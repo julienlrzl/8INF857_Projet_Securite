@@ -1,2 +1,66 @@
-\chapter{Présentation de l’architecture}
+\chapter{Mise en place de l’environnement}
 \label{chap:chap_1}
+
+
+\section{Environnement de travail}
+Le projet a été réalisé par une équipe de quatre personnes. Chaque membre a travaillé sur une machine hôte différente (Windows ou macOS), mais l’ensemble du projet a été uniformisé à travers l’utilisation d’une machine virtuelle Ubuntu. Ce choix garantit un environnement cohérent, reproductible et isolé, permettant de tester des scénarios d’attaques sans risque pour les machines personnelles.
+
+L’environnement retenu est le suivant :
+\begin{itemize}
+    \item \textbf{Système d’exploitation invité} : Ubuntu 22.04 LTS (Linux)
+    \item \textbf{Hyperviseurs utilisés} : VMware Fusion (macOS) et VMware Workstation/VirtualBox (Windows)
+    \item \textbf{Ressources allouées} : 2 vCPU, 4 Go de mémoire vive, 40 Go de disque
+    \item \textbf{Interface réseau} : \texttt{ens160}, configurée en mode NAT
+\end{itemize}
+
+Ce choix d’architecture permet de travailler de manière collaborative tout en garantissant que les configurations, les scripts et les fichiers produits sont compatibles sur toutes les machines de l’équipe.
+
+\section{Briques logicielles nécessaires}
+Le projet repose sur quatre composants principaux :
+\begin{itemize}
+    \item \textbf{Suricata} : un système de détection et de prévention d’intrusions (IDS/IPS), chargé d’analyser le trafic réseau et de générer des alertes.
+    \item \textbf{syslog-ng} : un collecteur de logs, utilisé pour centraliser les journaux générés par le système et par Suricata.
+    \item \textbf{Elasticsearch} : une base de données orientée recherche, permettant d’indexer et de stocker les logs collectés.
+    \item \textbf{Kibana} : une interface web de visualisation connectée à Elasticsearch, permettant d’explorer et d’analyser les logs.
+\end{itemize}
+
+\section{Installation des composants}
+L’installation a été réalisée en ligne de commande sur Ubuntu. Les principales étapes sont résumées ci-dessous.
+
+\subsection*{Suricata}
+\begin{verbatim}
+sudo apt install -y suricata suricata-update
+sudo suricata-update
+sudo systemctl restart suricata
+\end{verbatim}
+La commande \texttt{suricata --build-info} permet de vérifier que l’installation est correcte.
+
+\subsection*{syslog-ng}
+\begin{verbatim}
+sudo apt install -y syslog-ng
+systemctl status syslog-ng
+\end{verbatim}
+
+\subsection*{Elasticsearch}
+Téléchargement et extraction de la version ARM64 :
+\begin{lstlisting}[style=bashstyle]
+curl -LO https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.15.3-linux-aarch64.tar.gz
+tar -xzf elasticsearch-8.15.3-linux-aarch64.tar.gz
+cd elasticsearch-8.15.3
+./bin/elasticsearch -E discovery.type=single-node -E xpack.security.enabled=false
+\end{lstlisting}
+
+\subsection*{Kibana}
+Téléchargement et extraction :
+\begin{lstlisting}[style=bashstyle]
+curl -LO https://artifacts.elastic.co/downloads/kibana/kibana-8.15.3-linux-aarch64.tar.gz
+tar -xzf kibana-8.15.3-linux-aarch64.tar.gz
+cd kibana-8.15.3
+./bin/kibana
+\end{lstlisting}
+
+\section{Automatisation par alias}
+Afin de simplifier le lancement des différents composants, des alias ont été définis dans le fichier \texttt{~/.bashrc}. 
+Ces raccourcis permettent à l’équipe de démarrer ou d’arrêter les services (Elasticsearch, Kibana, Suricata) avec des commandes simples, 
+plutôt que de retaper à chaque fois des lignes longues et complexes. 
+Cette approche améliore la lisibilité, réduit les erreurs de saisie et accélère les tests.
