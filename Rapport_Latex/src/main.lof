@@ -1,3 +1,9 @@
 \babel@toc {french}{}\relax 
 \babel@toc {french}{}\relax 
+\contentsline {figure}{\numberline {{2.1}}{\ignorespaces \MakeUppercase []{Vérification du chemin des règles et inclusion de \texttt {local.rules}.}}}{6}{figure.caption.8}%
+\contentsline {figure}{\numberline {{2.2}}{\ignorespaces \MakeUppercase []{Règle ICMP de test ajoutée au fichier \texttt {local.rules}.}}}{7}{figure.caption.9}%
+\contentsline {figure}{\numberline {{2.3}}{\ignorespaces \MakeUppercase []{Validation de la configuration de Suricata.}}}{7}{figure.caption.10}%
+\contentsline {figure}{\numberline {{2.4}}{\ignorespaces \MakeUppercase []{Relance de Suricata en mode démon sur l'interface \texttt {ens160}.}}}{8}{figure.caption.11}%
+\contentsline {figure}{\numberline {{2.5}}{\ignorespaces \MakeUppercase []{Génération de trafic ICMP avec la commande \texttt {ping}.}}}{8}{figure.caption.12}%
+\contentsline {figure}{\numberline {{2.6}}{\ignorespaces \MakeUppercase []{Alerte générée dans \texttt {fast.log} suite au ping ICMP.}}}{9}{figure.caption.13}%
 \contentsfinish 
