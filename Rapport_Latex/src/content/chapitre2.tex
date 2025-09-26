@@ -94,3 +94,48 @@ L’analyse du fichier \texttt{/var/log/suricata/fast.log} montre bien que la r�
 
 \bigskip
 En conclusion, Suricata est correctement configuré pour charger les règles locales et détecter du trafic ICMP simple, démontrant sa capacité à identifier des anomalies sur le réseau.
+
+\section{Configuration de syslog-ng}
+
+Le rôle de \texttt{syslog-ng} dans notre projet est de récupérer les événements JSON générés par Suricata, d'en conserver une copie locale à des fins de vérification, et de les transmettre automatiquement vers Elasticsearch pour qu'ils puissent être analysés et visualisés dans Kibana.
+
+\subsection{Fichier de configuration}
+Pour réaliser cette intégration, j’ai ajouté un fichier de configuration dédié dans \texttt{/etc/syslog-ng/conf.d/30-suricata-es.conf}.  
+Celui-ci définit une source pointant vers le fichier \texttt{eve.json} de Suricata, une destination locale où les événements sont recopiés, ainsi qu’une destination HTTP vers Elasticsearch.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/figures/sng-conf.png}
+    \caption{Fichier de configuration syslog-ng pour l’intégration des événements Suricata.}
+\end{figure}
+
+\subsection{Démarrage et vérification du service}
+Une fois le fichier ajouté, j’ai redémarré le service \texttt{syslog-ng} pour appliquer la configuration. Le statut confirme que le service est bien actif et fonctionne correctement.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/figures/sng-status.png}
+    \caption{Vérification du bon fonctionnement du service \texttt{syslog-ng}.}
+\end{figure}
+
+\subsection{Copie locale des événements}
+Afin de faciliter le débogage, une copie locale des événements est conservée dans le fichier \texttt{/var/log/ids/suricata-collected.json}. On peut y observer directement les lignes JSON produites par Suricata et collectées par syslog-ng.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{assets/figures/sng-localcopy.png}
+    \caption{Copie locale des événements Suricata dans \texttt{suricata-collected.json}.}
+\end{figure}
+
+\subsection{Vérification côté Elasticsearch et Kibana}
+Enfin, les événements collectés sont bien transmis vers Elasticsearch. Dans Kibana, on retrouve un index \texttt{suricata-*} contenant les données issues de Suricata.  
+La capture ci-dessous illustre un exemple d’événements reçus, confirmant le bon acheminement de bout en bout.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{assets/figures/es-search-suricata.png}
+    \caption{Événements Suricata visibles dans Kibana après intégration avec syslog-ng et Elasticsearch.}
+\end{figure}
+
+\bigskip
+En résumé, syslog-ng assure avec succès son rôle de passerelle entre Suricata et Elasticsearch, permettant d’automatiser la collecte et l’envoi des événements de sécurité vers notre SIEM.

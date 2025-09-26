@@ -6,4 +6,8 @@
 \contentsline {figure}{\numberline {{2.4}}{\ignorespaces \MakeUppercase []{Relance de Suricata en mode démon sur l'interface \texttt {ens160}.}}}{8}{figure.caption.11}%
 \contentsline {figure}{\numberline {{2.5}}{\ignorespaces \MakeUppercase []{Génération de trafic ICMP avec la commande \texttt {ping}.}}}{8}{figure.caption.12}%
 \contentsline {figure}{\numberline {{2.6}}{\ignorespaces \MakeUppercase []{Alerte générée dans \texttt {fast.log} suite au ping ICMP.}}}{9}{figure.caption.13}%
+\contentsline {figure}{\numberline {{2.7}}{\ignorespaces \MakeUppercase []{Fichier de configuration syslog-ng pour l’intégration des événements Suricata.}}}{10}{figure.caption.14}%
+\contentsline {figure}{\numberline {{2.8}}{\ignorespaces \MakeUppercase []{Vérification du bon fonctionnement du service \texttt {syslog-ng}.}}}{10}{figure.caption.15}%
+\contentsline {figure}{\numberline {{2.9}}{\ignorespaces \MakeUppercase []{Copie locale des événements Suricata dans \texttt {suricata-collected.json}.}}}{11}{figure.caption.16}%
+\contentsline {figure}{\numberline {{2.10}}{\ignorespaces \MakeUppercase []{Événements Suricata visibles dans Kibana après intégration avec syslog-ng et Elasticsearch.}}}{11}{figure.caption.17}%
 \contentsfinish 
